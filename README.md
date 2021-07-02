@@ -5,8 +5,8 @@ Creats a terraform docker provider and attempts to deploy an ansible docker imag
 
 # prerequisits:
 
-Local terraform installation.
+- Local terraform installation.
 
-Ansible playbook ../datacentre/ansible
+- Ansible playbook ../datacentre/ansible
 
-Docker
+- Local Docker installation
