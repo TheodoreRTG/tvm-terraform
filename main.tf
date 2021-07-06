@@ -23,9 +23,10 @@ resource "docker_image" "ansible" {
 }
 
 # Create a container
-resource "docker_container" "tensorflow" {
+resource "docker_container" "ansible" {
   image = docker_image.ansible.latest
-  name  = "tensorflow"
+  name  = "ansible"
+  command = ["apt-get install git", "git clone https://github.com/Linaro/datacentre.git", "cd datacentre/ansible", "ansible-playbook -i run_local -l localhost -e @main_build_vars.yml build_tensorflow.yml"]
 
   ports {
     external = 8080
@@ -34,10 +35,10 @@ resource "docker_container" "tensorflow" {
 
 }
 
-module "ansible_provisioner" {
-  source = "github.com/cloudposse/tf_ansible"
-  arguments = ["--user=ubuntu"]
-  envs = ["host=docker_container.ansible"]
-  playbook = "../datacentre/ansible/build_tensorflow.yml"
-  dry_run = false
-}
+#module "ansible_provisioner" {
+# source = "github.com/cloudposse/tf_ansible"
+#  arguments = ["--user=ubuntu"]
+#  envs = ["host=docker_container.ansible"]
+#  playbook = "../datacentre/ansible/build_tensorflow.yml"
+#  dry_run = false
+#}
