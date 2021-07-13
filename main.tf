@@ -18,7 +18,8 @@ provider "docker" {
 # Pulls the image
 
 resource "docker_image" "ansible" {
-  name = "ansible/ansible:ubuntu1404"
+name = "linoliveira/ansible-aarch64"
+  #  name = "ansible/ansible:ubuntu1404"
   keep_locally = true
 }
 
