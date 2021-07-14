@@ -4,10 +4,6 @@ terraform {
       source  = "kreuzwerker/docker"
       version = "2.13.0"
     }
-#   ansible = {
-#     source = "cloudposse/ansible/null"
-#     version = "0.6.0"
-#   }
   }
 }
 
@@ -18,7 +14,10 @@ provider "docker" {
 # Pulls the image
 
 resource "docker_image" "ansible" {
-  name = "ansible/ansible:ubuntu1404"
+  # Ansible image for Ubuntu x86
+  #  name = "ansible/ansible:ubuntu1404"
+  # Ansible image for aarch64
+  name = "linoliveira/ansible-aarch64"
   keep_locally = true
 }
 
@@ -37,7 +36,7 @@ resource "docker_container" "tensorflow" {
 module "ansible_provisioner" {
  source = "github.com/cloudposse/tf_ansible"
   arguments = ["--user=ubuntu"]
-  envs = ["host=docker_container.ansible"]
+  envs = ["host=docker_container.tensorflow"]
   playbook = "../datacentre/ansible/build_tensorflow.yml"
   dry_run = false
 }
