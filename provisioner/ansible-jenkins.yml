@@ -1,0 +1,13 @@
+- hosts: 127.0.0.1
+
+  vars:
+    jenkins_version: "1.642.4"
+    jenkins_url: http://127.0.0.1
+    jenkins_port: 8080
+    jenkins_install_via: "docker"
+    jenkins_jobs: [
+        "my-first-job",
+      ]
+      
+  roles:
+    - emmetog.jenkins

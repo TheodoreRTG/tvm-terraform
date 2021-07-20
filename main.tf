@@ -12,7 +12,7 @@ terraform {
 }
 
 provider "docker" {
-  host = "unix:///var/run/docker.sock"
+#  host = "unix:///var/run/docker.sock"
 }
 
 # Pulls the image
@@ -34,10 +34,10 @@ resource "docker_container" "tensorflow" {
 
 }
 
-module "ansible_provisioner" {
- source = "github.com/cloudposse/tf_ansible"
-  arguments = ["--user=ubuntu"]
-  envs = ["host=docker_container.ansible"]
-  playbook = "../datacentre/ansible/build_tensorflow.yml"
-  dry_run = false
-}
+#module "ansible_provisioner" {
+# source = "github.com/cloudposse/tf_ansible"
+#  arguments = ["--user=ubuntu"]
+#  envs = ["host=docker_container.ansible"]
+#  playbook = "../datacentre/ansible/build_tensorflow.yml"
+#  dry_run = false
+#}
