@@ -1,0 +1,9 @@
+- name: inital jenkins test setup from tlcpack-ci
+  shell:
+    cmd: |
+      set -xe 
+      git clone https://github.com/K1504296/tlcpack-ci.git
+      ./bootstrap.sh
+      stage-scripts/1-create-plan.sh
+      #stage-scripts/2-apply-plan.sh -> applies for aws
+      stage-scripts/3-provision-provision.sh
