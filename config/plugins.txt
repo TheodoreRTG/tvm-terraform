@@ -1,0 +1,12 @@
+blueocean
+build-timeout
+configuration-as-code
+github-oauth
+github-scm-trait-notification-context
+github-pullrequest
+github-branch-source
+matrix-auth
+ssh-slaves
+workflow-aggregator
+workflow-multibranch
+pipeline-github-lib
