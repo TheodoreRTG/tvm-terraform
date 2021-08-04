@@ -33,4 +33,5 @@ resource "docker_image" "jenkins-master" {
 resource "docker_container" "jenkins-node" {
   name = "jenkins-node"
   image = docker_image.jenkins-master.latest
+  destroy_grace_seconds = 30
 }
