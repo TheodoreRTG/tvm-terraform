@@ -18,7 +18,7 @@ provider "docker" {
 resource "docker_image" "jenkins-master" {
   name = "jenkins-master"
   build {
-    path = "/home/theogrey/tvm-terraform"
+    path = "."
     tag = ["jenkins-master:develop"]
     build_arg = {
       foo : "jenkins-master"
