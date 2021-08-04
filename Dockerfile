@@ -1,8 +1,10 @@
 FROM praqma/jenkins4casc:1.0
-  
-LABEL maintainer="man@praqma.net"
-COPY plugins_extra.txt /usr/share/jenkins/ref/plugins_extra.txt
 
-ARG JAVA_OPTS
+ENV JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+USER root
+RUN mkdir /provision
+COPY config/plugins.txt /provision/required-plugins.txt
 
-RUN xargs /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins_extra.txt
+RUN bash -c 'install-plugins.sh </provision/required-plugins.txt'
+
+USER jenkins
